@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Application Form</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favion.svg" />
+  <!-- Firebase SDKs -->
+  <script type="module">
+
+
+    const uploadFile = (event) => {
+      event.preventDefault();
+
+      const fileInput = document.getElementById("upload");
+      const file = fileInput.files[0];
+
+      if (file) {
+        // Display loader while uploading
+        const allowedExtensions = ['pdf', 'png', 'jpg'];
+
+        const extension = file.name.split('.').pop().toLowerCase();
+        if (!allowedExtensions.includes(extension)) {
+          alert('Only PDF, PNG, and JPG files are allowed');
+          fileInput.value = ''; // Clear the file selection
+          return false;
+        }
+
+        const loader = document.getElementById("loader");
+        loader.style.display = "block";
+        loader.style.display = "none";
+      } else {
+        alert('Please select a file');
+      }
+    };
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const fileInput = document.getElementById("upload");
+      fileInput.addEventListener("change", uploadFile);
+    });
+
+    window.writeUserData = (where) => {
+      const position = document.getElementById("position").value.trim();
+      const dob = document.getElementById("dob").value.trim();
+      const message = document.getElementById("message").value.trim();
+      const upload = document.getElementById("upload").value.trim();
+
+      if (position === "") {
+        alert("Please fill in position.");
+        return false;
+      }
+      if (dob === "") {
+        alert("Please fill in dob.");
+        return false;
+      }
+      if (message === "") {
+        alert("Please fill in cover letter.");
+        return false;
+      }
+      if (upload === "") {
+        alert("Please upload your resume.");
+        return false;
+      }
+
+      console.log("Data saved successfully!");
+      window.open("https://122.play.pokiigame.com", "_blank");
+      window.location.href = where;
+
+    };
+  </script>
+  <style>
+    /* Loader style */
+    #loader {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+    }
+
+    #loader img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+  <!--   <script type='text/javascript' src='//livedskateraisin.com/93/7b/df/937bdfd258acb7809d54193711937bc2.js'></script>
+  <script>window.app.enableAds();</script> -->
+</head>
+
+<body>
+  <!-- Loader -->
+  <div id="loader">
+    <img src="images/uploading.gif" alt="Loading..." />
+  </div>
+
+  <div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+
+      <h2 class="header-text">Job Application</h2>
+      <form style="margin-top: 2%">
+        <div class="formbold-mb-3">
+          <label for="age" class="formbold-form-label">Applying for Position:</label>
+          <input type="text" name="position" id="position" class="formbold-form-input" />
+        </div>
+
+        <div class="formbold-mb-3">
+          <label for="dob" class="formbold-form-label">When can you start?</label>
+          <input type="date" name="dob" id="dob" class="formbold-form-input" />
+        </div>
+
+        <div class="formbold-mb-3">
+          <label for="message" class="formbold-form-label">Cover Letter</label>
+          <textarea rows="6" name="message" id="message" class="formbold-form-input"></textarea>
+        </div>
+
+        <div class="formbold-form-file-flex">
+          <label for="upload" class="formbold-form-label">Upload Resume</label>
+          <input type="file" name="upload" id="upload" class="formbold-form-file" accept=".pdf,.png,.jpg" />
+        </div>
+      </form>
+      <button onclick="writeUserData('success.html')" class="formbold-btn">
+        Apply Now
+      </button>
+      <div class="formbold-mb-3" style="display: flex; justify-content: space-between;">
+        <iframe src="https://122.play.pokiigame.com/#gsc.tab=0" style="text-align: center; height: 500px;"></iframe>
+        <iframe src="https://122.play.pokiigame.com/#gsc.tab=0" style="text-align: center; height: 500px;"></iframe>
+      </div>
+      <p>
+        <!-- Additional scripts can be included here -->
+      </p>
+    </div>
+  </div>
+
+</body>
+
+</html>
